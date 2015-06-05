@@ -1,0 +1,121 @@
+\documentclass[
+  12pt,
+  parskip=half,
+]{scrlttr2}
+
+\input{snippets/font}
+
+\input{snippets/babel}
+\input{snippets/geometry}
+\input{snippets/hyperref}
+
+\KOMAoptions{
+  addrfield=on,      % Adressfeld fuer Fensterkuverts
+  backaddress=on,    % Absender im Brieffenster
+  foldmarks=off,     % Faltmarken setzen
+  fromalign=right,   % Plazierung des Briefkopfs (wenn nicht \firsthead)
+  fromemail=on,      % Emailadresse
+  fromfax=off,       % Faxnummer
+  fromlogo=off,      % Firmenlogo
+  fromphone=on,      % Telefonnummer im Absender
+  fromrule=off,      % Linie im Absender (aftername, afteraddress)
+  fromurl=off,       % Homepage
+  headsepline=off,   % Linie unter der Seitenzahl
+  locfield=narrow,   % zusaetzliches Feld fuer Absender
+  numericaldate=off, % Datum numerisch ausgeben
+  pagenumber=off,    % Seitenzahl oben rechts
+  paper=a4,          % Zusätzliche Angabe nötig
+  refline=narrow,    % Geschaeftszeile im Satzspiegel
+}
+
+\begin{document}
+
+% Definitionen ändern
+\setkomavar{firsthead}{\center
+  {\huge\textbf{\usekomavar{fromname}}} \\
+  \usekomavar{fromaddress} \\
+  \usekomavar{fromphone} $\cdot$ \usekomavar{fromemail}
+}
+%\firstfoot{Fußzeile}
+
+% Adresse hochschieben um Platz zu sparen
+%\makeatletter
+%%	\@setplength{firstheadvpos}{0cm}
+%	\@addtoplength{toaddrvpos}{-0.5cm}
+%	\@addtoplength{refvpos}{-0.5cm}
+%\makeatother
+
+% Seitenstil
+\pagestyle{plain}%% keine Header in der Kopfzeile
+
+% Briefstil und Position des Briefkopfs
+\LoadLetterOption{DIN} %% oder: DIN, DINmtext, SN, SNleft, KOMAold.
+
+% Strings neu definieren
+\renewcommand{\enclname}{Anlagen}
+\renewcommand{\emailname}{}
+\renewcommand{\phonename}{}
+\setkomavar{emailseparator}{}
+\setkomavar{phoneseparator}{}
+\setkomavar{enclseparator}{}
+\setkomavar{backaddressseparator}{ $\cdot$ }
+
+% Mehr Platz zum unterschreiben
+\makeatletter
+\@setplength{sigbeforevskip}{3\baselineskip}
+\makeatother
+
+% Alles mit Bullets listen
+\renewcommand{\labelitemi}{$\bullet$}
+\renewcommand{\labelitemii}{$\bullet$}
+
+% Absender
+\setkomavar{fromname}{FROMNAME}
+\setkomavar{fromaddress}{FROMADDRESS}
+\setkomavar{fromphone}{FROMPHONE}
+\setkomavar{fromemail}{\href{mailto:FROMEMAIL}{FROMEMAIL}}
+%\setkomavar{signature}{(Name)}
+
+% Empfänger
+\setkomavar{toname}{ACME Inc.}
+\setkomavar{toaddress}{Eine Straße 1\newline 12345 Einestadt}
+
+% Versendungsart
+%\setkomavar{specialmail}{Einschreiben mit Rückschein}
+
+% Geschaeftszeilenfelder
+\setkomavar{place}{PLACE}
+\setkomavar{placeseparator}{, den }
+\setkomavar{date}{\today}
+%\setkomavar{yourmail}{1. 1. 2003}%% 'Ihr Schreiben...'
+%\setkomavar{yourref}{Kennziffer 37.1}%%    'Ihr Zeichen...'
+%\setkomavar{myref}{}%%      Unser Zeichen
+%\setkomavar{invoice}{123}%% Rechnungsnummer
+
+\setkomavar{subject}{Wichtiges Schreiben}
+
+\hypersetup{
+  pdfkeywords={Wichtiges Schreiben},
+  pdfsubject={Wichtiges Schreiben},
+  pdftitle={Wichtiges Schreiben},
+  %hidelinks,
+}
+
+\begin{letter}{}
+% Seitenabstand unten verringern.
+%\enlargethispage{5cm}
+
+\opening{Sehr geehrte Damen und Herren, }
+
+Absatz
+
+Absatz
+
+\closing{Mit freundlichen Grüßen, }
+
+\ps PS: blubber
+
+\encl{}
+
+\end{letter}
+\end{document}
