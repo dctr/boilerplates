@@ -15,7 +15,7 @@
     "cleandeps": "rimraf bower_components node_modules",
     "develop": "livereload/watchy/....",
     "grunt": "grunt",
-    "postinstall": "npm upgrade && bower install && bower update",
+    "postinstall": "npm update && bower install && bower update",
     "test": "grunt test"
   },
   "repository": {
