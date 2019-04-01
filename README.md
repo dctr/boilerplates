@@ -29,7 +29,7 @@ Run `auto/setup` script to set up the build environment. This will e.g. set up a
 - How build, test and run locally
 - Required environment variables
 - Should be nothing more than 
-  - Run `auto/dev-environment` to run a local dockerized instance
+  - Run `auto/dev-environment bash` to run a local dockerized instance
   - Run `auto/test` to run the tests in a dockerized environment
 
 ## Organisational
